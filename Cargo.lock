@@ -973,6 +973,7 @@ dependencies = [
 name = "proto-rust"
 version = "0.1.0"
 dependencies = [
+ "base64",
  "dotenv_codegen",
  "gif",
  "image",
