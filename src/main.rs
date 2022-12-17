@@ -27,7 +27,7 @@ impl EventHandler for Handler {
             //println!("Received command interaction: {:#?}", command);
 
             if command.data.name.as_str() == "test" {
-                commands::test::run(&command, &ctx).await.expect("Run command failed");
+                unsafe { commands::test::run(&command, &ctx).await.expect("Run command failed"); }
             }
         }
     }
@@ -35,6 +35,8 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
+    // Initialize ffmpeg
+    ffmpeg_next::init().unwrap();
     // Configure the client with your Discord bot token in the environment.
     let token = dotenv!("DISCORD_TOKEN");
 
